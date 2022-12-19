@@ -1,43 +1,45 @@
-/* https://meyerweb.com/eric/tools/css/reset/ */
-@import "meyer-reset.css";
+/* NORMALIZE */
+@import "./meyer-reset.css";
 
 /* DEV STYLES */
 
 
-
-body * {
+ /* body * {
     border: 1px solid coral;
     padding: 2px;
-}
-
-inner-column {
+} 
+ inner-column {
     border: 8px solid orange;
 }
 graphic-diptych {
     border: 8px solid dodgerblue;
 }
-
 header, footer, main { 
     border: 8px solid red;
 }
-
 section {
     border: 8px solid lime;
-}
+}  */
 
 
-
-/* SETTINGS */
+/* COLORS */
 
 html {
-    --background-color: #1f2937;
-    --button-color: #3882f6;
-    --black: #333;
+    --background-color: #00003b;
+    --button-color: #99003b;
+    --black: #000000;
     --white: #efefef;
-    --light: #e5e7eb;
+    --neutral: #c5c5c5;
+    --light: #cc003b;
+    --dark: #33003b;
+    --mid: #66003b;
 }
 
 /* SETUP */
+html {
+    height: 100%;
+}
+
 * { /* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
     box-sizing: border-box;
 }
@@ -68,10 +70,13 @@ p a, li a {
 /* https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/ */
 
 body {
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     min-height: 100vh;
+    background-color: var(--background-color);
+    background-image: linear-gradient(135deg, var(--background-color), var(--button-color) 50%, var(--dark));
 }
+
 main {
     flex-grow: 1;
 }
@@ -79,7 +84,6 @@ main {
 inner-column {
     display: block;
     padding: 10px;
-    /**/
     width: 98%;
     max-width: 1100px;
     margin-left: auto;
@@ -96,8 +100,8 @@ header inner-column, footer inner-column {
 }
 
 header, footer {
-    background-color: var(--background-color);
-    color: var(--light);
+    /*background-color: var(--background-color);*/
+    color: var(--white);
 }
 
 header inner-column a {
@@ -108,10 +112,23 @@ footer inner-column{
     justify-content: center;
 }
 
+.mode, .error {
+    color: var(--white);
+    display: flex;
+}
+
+.board {
+    width: 500px;
+    height: 500px;
+    border-collapse: collapse; 
+    display: grid;    
+}
+
 /* TYPOGRAPHY */
-.header-voice {
+.header-voice, .mode, .error {
     font-family: sans-serif;
     font-size: 24px;
+    margin: 5px;
 }
 
 .loud-voice {
@@ -119,6 +136,7 @@ footer inner-column{
     font-size: 32px;
     font-weight: 700;
     line-height: 1.0;
+    margin: 5px;
 }
 
 @media (min-width: 700px) {
@@ -162,23 +180,34 @@ header-links {
     gap: 20px;
 }
 
-/* GRAPHIC DIPTYCH */
-graphic-diptych {
+/* TEXT-CONTENT */
+
+text-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CONTROLS */
+control-section {
     display: block;
     gap: 20px;
 }
 
-graphic-diptych text-content {        
-    display: block;
+control-section text-content {        
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-graphic-diptych text-content p {
+control-section text-content p {
     margin-top: 20px;
     margin-bottom: 15px;
 }
 
 /* GRID */
-grid {
+grid-container {
     display: block;
 }
 
@@ -188,7 +217,7 @@ grid {
     grid-gap: 25px;
 } */
 
-cell {
+cell-container {
     display: block;
 }
 
@@ -213,8 +242,8 @@ cta-box .button {
 
 /* CLASSES */
 
-.welcome {
-    background-color: var(--background-color);
+.controls {
+    /*background-color: var(--background-color);*/
     color: var(--white);
 }
 
@@ -225,12 +254,17 @@ cta-box .button {
 
 .cell {
     background-color: var(--white);
+    border: solid 1px var(--black);
+    height: 15px;
 }
 
 .about {
     background-color: var(--light);
 }
 
-.cta {
-    background-color: var(--white);
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
