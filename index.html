@@ -11,7 +11,7 @@
 <body>
     <header>
         <inner-column>
-            <h2 class="header-voice"><a href="https://www.theodinproject.com/lessons/foundations-etch-a-sketch" target="blank" rel="noopener noreferrer">The Odin Project</a>  -- Etch A Sketch</h2>
+            <h2 class="header-voice"><a href="https://www.theodinproject.com/lessons/foundations-etch-a-sketch" target="blank" rel="noopener noreferrer">The Odin Project</a></h2><h2 class="header-voice">Etch A Sketch</h2>
             <header-links class="calm-voice">
                 <a href="https://github.com/BenjaminBGG" target="blank" rel="noopener noreferrer">Github</a>
                 <a href="https://www.linkedin.com/in/benjaminbgeorge/" target="blank" rel="noopener noreferrer">LinkedIn</a>
@@ -23,22 +23,29 @@
         <section class = "grid">
             <inner-column>
                 <div class="flex-container">
-                    <div class="mode">Mode: Coloring</div>
                     <div class="content">
-                        <div class="board"></div>
-                        <div class="buttons">
-                            <button onclick="setColor('var(--black)')">Black</button>     
-                            <button onclick="setColor('var(--neutral)')">Gray</button>
-                            <button onclick="setColor('var(--white)')">Eraser</button>
-                            <button onclick="setColor('random')">Random</button>
-                            <button onclick="resetGrid(16)">Reset</button>
-                        </div>
-                        <input type="text" placeholder="Size of Board" value="16" onchange="setSize(this.value)"/>
-                        <button>Set Size</button>
+                        <div class="mode">Mode: Coloring</div>
+                        <div class="pen-style">Pen Style: Black</div>
+                        <div class="board">
+                        </div>                        
                     </div>
-                    <div class="error"></div>
+                    
                 </div>
             </inner-column>
+        </section>
+        <section class="controls">
+            <div class="buttons">
+                <button class="black-button" onclick="setPenColor('var(--black)')">Black</button>     
+                <button class="gray-button" onclick="setPenColor('var(--neutral)')">Gray</button>
+                <button class="random-button" onclick="setPenColor('random')">Random</button>
+                <button class="eraser-button" onclick="setPenColor('var(--white)')">Erase</button>
+                <button onclick="resetGrid(16)">Reset</button>
+            </div>
+            <input class="set-size" type="text" placeholder="Size of Board" value="16" onchange="setGridSize(this.value)"/>
+            <div class="buttons">
+                <button>Set Size</button>
+            </div>           
+            <div class="error"></div>
         </section>
     </main>
 

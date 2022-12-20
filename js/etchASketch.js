@@ -1,17 +1,11 @@
-            
-            
             //  --- GLOBAL VARIABLES --- //            
 var penColor = 'var(--black)';
-var color = 'var(--black)';
 let click = true;
-            //  --- CREATE GRID ---  //
 
+            //  --- INITIALIZE GAME ---  //
 createGrid(16);
 
             //  --- FUNCTIONS ---  //
-
-        // - GET NEW COLOR - //
-
 function createGrid(size){
     let board = document.querySelector('.board');
     let squares = board.querySelectorAll('div');
@@ -34,48 +28,63 @@ function setCellColor () {
         } else {
             this.style.backgroundColor = penColor;
         }
-
     }
 }
 
-function setColor(choice) {
+function setPenColor(choice) {
     penColor = choice;
-    console.log(choice);
 }
 
 function getRandomColor() {
     return '#'+(Math.random()*0xFFFFFF<<0).toString(16); 
-  }
+}
 
-function setSize(size) {
-    if(size >= 2 && size <= 100){
+function setGridSize(size) {
+    if (size >= 2 && size <= 100) {
         document.querySelector('.error').textContent = '';
-        createGrid(size);
-    }
-    else {
+        resetGrid(size);
+    } else {
         document.querySelector('.error').textContent = 'Input Must Be Between 2 & 100';
     }
 };
 
-function resetGrid() {
-    createGrid(16);
+// Reset to starting conditions
+function resetGrid(size = 16) {
+    createGrid(size);
     penColor = 'var(--black)';
     click = true;
     document.querySelector('.mode').textContent = 'Mode: Coloring';
+    document.querySelector('.pen-style').textContent = 'Pen Style: Black';
+    document.querySelector('.set-size').value = size;
 };
 
             //  --- EVENT LISTENERS ---  //
 
-// (de)activate pen on click
-
+// (De)activate pen on click
 document.querySelector('body').addEventListener('click', (e) => { 
-    if (e.target.tagName != 'BUTTON'){
+    if (e.target.tagName != 'BUTTON' && e.target.tagName != 'INPUT'){
         click = !click;
         if(click) { 
             document.querySelector('.mode').textContent = 'Mode: Coloring';
         } else {
             document.querySelector('.mode').textContent = 'Mode: Not Coloring';
         }
-    }
+    } 
 });
 
+// Update pen style indicator
+document.querySelector('.black-button').addEventListener('click', () => {
+    document.querySelector('.pen-style').textContent = 'Pen Style: Black';
+});
+
+document.querySelector('.gray-button').addEventListener('click', () => {
+    document.querySelector('.pen-style').textContent = 'Pen Style: Gray';
+});
+
+document.querySelector('.random-button').addEventListener('click', () => {
+    document.querySelector('.pen-style').textContent = 'Pen Style: Random';
+});
+
+document.querySelector('.eraser-button').addEventListener('click', () => {
+    document.querySelector('.pen-style').textContent = 'Pen Style: Eraser';
+});
